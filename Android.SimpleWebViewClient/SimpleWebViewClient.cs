@@ -13,8 +13,8 @@ namespace Asjc.Android.SimpleWebViewClient
     public delegate void PageFinishedCallback(WebView? view, string? url);
     public delegate void PageStartedCallback(WebView? view, string? url, Bitmap? favicon);
     public delegate void ReceivedClientCertRequestCallback(WebView? view, ClientCertRequest? request);
-    public delegate void ReceivedError1Callback(WebView? view, [GeneratedEnum] ClientError errorCode, string? description, string? failingUrl);
-    public delegate void ReceivedError2Callback(WebView? view, IWebResourceRequest? request, WebResourceError? error);
+    public delegate void ReceivedErrorCallback1(WebView? view, [GeneratedEnum] ClientError errorCode, string? description, string? failingUrl);
+    public delegate void ReceivedErrorCallback2(WebView? view, IWebResourceRequest? request, WebResourceError? error);
     public delegate void ReceivedHttpAuthRequestCallback(WebView? view, HttpAuthHandler? handler, string? host, string? realm);
     public delegate void ReceivedHttpErrorCallback(WebView? view, IWebResourceRequest? request, WebResourceResponse? errorResponse);
     public delegate void ReceivedLoginRequestCallback(WebView? view, string? realm, string? account, string? args);
@@ -31,23 +31,23 @@ namespace Asjc.Android.SimpleWebViewClient
         public SimpleWebViewClient() { }
 
         public SimpleWebViewClient(FormResubmissionCallback? formResubmissionCallback = null,
-                           LoadResourceCallback? loadResourceCallback = null,
-                           PageCommitVisibleCallback? pageCommitVisibleCallback = null,
-                           PageFinishedCallback? pageFinishedCallback = null,
-                           PageStartedCallback? pageStartedCallback = null,
-                           ReceivedClientCertRequestCallback? receivedClientCertRequestCallback = null,
-                           ReceivedError1Callback? receivedError1Callback = null,
-                           ReceivedError2Callback? receivedError2Callback = null,
-                           ReceivedHttpAuthRequestCallback? receivedHttpAuthRequestCallback = null,
-                           ReceivedHttpErrorCallback? receivedHttpErrorCallback = null,
-                           ReceivedLoginRequestCallback? receivedLoginRequestCallback = null,
-                           ReceivedSslErrorCallback? receivedSslErrorCallback = null,
-                           RenderProcessGoneCallback? renderProcessGoneCallback = null,
-                           SafeBrowsingHitCallback? safeBrowsingHitCallback = null,
-                           ScaleChangedCallback? scaleChangedCallback = null,
-                           TooManyRedirectsCallback? tooManyRedirectsCallback = null,
-                           UnhandledInputEventCallback? unhandledInputEventCallback = null,
-                           UnhandledKeyEventCallback? unhandledKeyEventCallback = null)
+                                   LoadResourceCallback? loadResourceCallback = null,
+                                   PageCommitVisibleCallback? pageCommitVisibleCallback = null,
+                                   PageFinishedCallback? pageFinishedCallback = null,
+                                   PageStartedCallback? pageStartedCallback = null,
+                                   ReceivedClientCertRequestCallback? receivedClientCertRequestCallback = null,
+                                   ReceivedErrorCallback1? receivedErrorCallback1 = null,
+                                   ReceivedErrorCallback2? receivedErrorCallback2 = null,
+                                   ReceivedHttpAuthRequestCallback? receivedHttpAuthRequestCallback = null,
+                                   ReceivedHttpErrorCallback? receivedHttpErrorCallback = null,
+                                   ReceivedLoginRequestCallback? receivedLoginRequestCallback = null,
+                                   ReceivedSslErrorCallback? receivedSslErrorCallback = null,
+                                   RenderProcessGoneCallback? renderProcessGoneCallback = null,
+                                   SafeBrowsingHitCallback? safeBrowsingHitCallback = null,
+                                   ScaleChangedCallback? scaleChangedCallback = null,
+                                   TooManyRedirectsCallback? tooManyRedirectsCallback = null,
+                                   UnhandledInputEventCallback? unhandledInputEventCallback = null,
+                                   UnhandledKeyEventCallback? unhandledKeyEventCallback = null)
         {
             FormResubmission += formResubmissionCallback;
             LoadResource += loadResourceCallback;
@@ -55,8 +55,8 @@ namespace Asjc.Android.SimpleWebViewClient
             PageFinished += pageFinishedCallback;
             PageStarted += pageStartedCallback;
             ReceivedClientCertRequest += receivedClientCertRequestCallback;
-            ReceivedError1 += receivedError1Callback;
-            ReceivedError2 += receivedError2Callback;
+            ReceivedError1 += receivedErrorCallback1;
+            ReceivedError2 += receivedErrorCallback2;
             ReceivedHttpAuthRequest += receivedHttpAuthRequestCallback;
             ReceivedHttpError += receivedHttpErrorCallback;
             ReceivedLoginRequest += receivedLoginRequestCallback;
@@ -75,8 +75,8 @@ namespace Asjc.Android.SimpleWebViewClient
         public event PageFinishedCallback? PageFinished;
         public event PageStartedCallback? PageStarted;
         public event ReceivedClientCertRequestCallback? ReceivedClientCertRequest;
-        public event ReceivedError1Callback? ReceivedError1;
-        public event ReceivedError2Callback? ReceivedError2;
+        public event ReceivedErrorCallback1? ReceivedError1;
+        public event ReceivedErrorCallback2? ReceivedError2;
         public event ReceivedHttpAuthRequestCallback? ReceivedHttpAuthRequest;
         public event ReceivedHttpErrorCallback? ReceivedHttpError;
         public event ReceivedLoginRequestCallback? ReceivedLoginRequest;
