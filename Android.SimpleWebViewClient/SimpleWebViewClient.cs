@@ -98,7 +98,7 @@ namespace Asjc.Android.SimpleWebViewClient
         public override void OnReceivedHttpAuthRequest(WebView? view, HttpAuthHandler? handler, string? host, string? realm)
         {
             base.OnReceivedHttpAuthRequest(view, handler, host, realm);
-            ReceivedHttpAuthRequest.Invoke(view, handler, host, realm);
+            ReceivedHttpAuthRequest?.Invoke(view, handler, host, realm);
         }
 
         public override void OnReceivedHttpError(WebView? view, IWebResourceRequest? request, WebResourceResponse? errorResponse)
@@ -137,6 +137,7 @@ namespace Asjc.Android.SimpleWebViewClient
             ScaleChanged?.Invoke(view, oldScale, newScale);
         }
 
+        [Obsolete]
         public override void OnTooManyRedirects(WebView? view, Message? cancelMsg, Message? continueMsg)
         {
             base.OnTooManyRedirects(view, cancelMsg, continueMsg);
