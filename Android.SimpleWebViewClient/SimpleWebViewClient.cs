@@ -7,6 +7,25 @@ using Android.Webkit;
 
 namespace Asjc.Android.SimpleWebViewClient
 {
+    public delegate void FormResubmissionCallback(WebView? view, Message? dontResend, Message? resend);
+    public delegate void LoadResourceCallback(WebView? view, string? url);
+    public delegate void PageCommitVisibleCallback(WebView? view, string? url);
+    public delegate void PageFinishedCallback(WebView? view, string? url);
+    public delegate void PageStartedCallback(WebView? view, string? url, Bitmap? favicon);
+    public delegate void ReceivedClientCertRequestCallback(WebView? view, ClientCertRequest? request);
+    public delegate void ReceivedError1Callback(WebView? view, [GeneratedEnum] ClientError errorCode, string? description, string? failingUrl);
+    public delegate void ReceivedError2Callback(WebView? view, IWebResourceRequest? request, WebResourceError? error);
+    public delegate void ReceivedHttpAuthRequestCallback(WebView? view, HttpAuthHandler? handler, string? host, string? realm);
+    public delegate void ReceivedHttpErrorCallback(WebView? view, IWebResourceRequest? request, WebResourceResponse? errorResponse);
+    public delegate void ReceivedLoginRequestCallback(WebView? view, string? realm, string? account, string? args);
+    public delegate void ReceivedSslErrorCallback(WebView? view, SslErrorHandler? handler, SslError? error);
+    public delegate bool RenderProcessGoneCallback(WebView? view, RenderProcessGoneDetail? detail);
+    public delegate void SafeBrowsingHitCallback(WebView? view, IWebResourceRequest? request, [GeneratedEnum] SafeBrowsingThreat threatType, SafeBrowsingResponse? callback);
+    public delegate void ScaleChangedCallback(WebView? view, float oldScale, float newScale);
+    public delegate void TooManyRedirectsCallback(WebView? view, Message? cancelMsg, Message? continueMsg);
+    public delegate void UnhandledInputEventCallback(WebView? view, InputEvent? e);
+    public delegate void UnhandledKeyEventCallback(WebView? view, KeyEvent? e);
+
     public class SimpleWebViewClient : WebViewClient
     {
         public SimpleWebViewClient() { }
@@ -49,25 +68,6 @@ namespace Asjc.Android.SimpleWebViewClient
             UnhandledInputEvent += unhandledInputEventCallback;
             UnhandledKeyEvent += unhandledKeyEventCallback;
         }
-
-        public delegate void FormResubmissionCallback(WebView? view, Message? dontResend, Message? resend);
-        public delegate void LoadResourceCallback(WebView? view, string? url);
-        public delegate void PageCommitVisibleCallback(WebView? view, string? url);
-        public delegate void PageFinishedCallback(WebView? view, string? url);
-        public delegate void PageStartedCallback(WebView? view, string? url, Bitmap? favicon);
-        public delegate void ReceivedClientCertRequestCallback(WebView? view, ClientCertRequest? request);
-        public delegate void ReceivedError1Callback(WebView? view, [GeneratedEnum] ClientError errorCode, string? description, string? failingUrl);
-        public delegate void ReceivedError2Callback(WebView? view, IWebResourceRequest? request, WebResourceError? error);
-        public delegate void ReceivedHttpAuthRequestCallback(WebView? view, HttpAuthHandler? handler, string? host, string? realm);
-        public delegate void ReceivedHttpErrorCallback(WebView? view, IWebResourceRequest? request, WebResourceResponse? errorResponse);
-        public delegate void ReceivedLoginRequestCallback(WebView? view, string? realm, string? account, string? args);
-        public delegate void ReceivedSslErrorCallback(WebView? view, SslErrorHandler? handler, SslError? error);
-        public delegate bool RenderProcessGoneCallback(WebView? view, RenderProcessGoneDetail? detail);
-        public delegate void SafeBrowsingHitCallback(WebView? view, IWebResourceRequest? request, [GeneratedEnum] SafeBrowsingThreat threatType, SafeBrowsingResponse? callback);
-        public delegate void ScaleChangedCallback(WebView? view, float oldScale, float newScale);
-        public delegate void TooManyRedirectsCallback(WebView? view, Message? cancelMsg, Message? continueMsg);
-        public delegate void UnhandledInputEventCallback(WebView? view, InputEvent? e);
-        public delegate void UnhandledKeyEventCallback(WebView? view, KeyEvent? e);
 
         public event FormResubmissionCallback? FormResubmission;
         public event LoadResourceCallback? LoadResource;
