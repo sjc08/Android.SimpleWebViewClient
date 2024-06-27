@@ -9,6 +9,47 @@ namespace Asjc.Android.SimpleWebViewClient
 {
     public class SimpleWebViewClient : WebViewClient
     {
+        public SimpleWebViewClient() { }
+
+        public SimpleWebViewClient(FormResubmissionCallback? formResubmissionCallback = null,
+                           LoadResourceCallback? loadResourceCallback = null,
+                           PageCommitVisibleCallback? pageCommitVisibleCallback = null,
+                           PageFinishedCallback? pageFinishedCallback = null,
+                           PageStartedCallback? pageStartedCallback = null,
+                           ReceivedClientCertRequestCallback? receivedClientCertRequestCallback = null,
+                           ReceivedError1Callback? receivedError1Callback = null,
+                           ReceivedError2Callback? receivedError2Callback = null,
+                           ReceivedHttpAuthRequestCallback? receivedHttpAuthRequestCallback = null,
+                           ReceivedHttpErrorCallback? receivedHttpErrorCallback = null,
+                           ReceivedLoginRequestCallback? receivedLoginRequestCallback = null,
+                           ReceivedSslErrorCallback? receivedSslErrorCallback = null,
+                           RenderProcessGoneCallback? renderProcessGoneCallback = null,
+                           SafeBrowsingHitCallback? safeBrowsingHitCallback = null,
+                           ScaleChangedCallback? scaleChangedCallback = null,
+                           TooManyRedirectsCallback? tooManyRedirectsCallback = null,
+                           UnhandledInputEventCallback? unhandledInputEventCallback = null,
+                           UnhandledKeyEventCallback? unhandledKeyEventCallback = null)
+        {
+            FormResubmission += formResubmissionCallback;
+            LoadResource += loadResourceCallback;
+            PageCommitVisible += pageCommitVisibleCallback;
+            PageFinished += pageFinishedCallback;
+            PageStarted += pageStartedCallback;
+            ReceivedClientCertRequest += receivedClientCertRequestCallback;
+            ReceivedError1 += receivedError1Callback;
+            ReceivedError2 += receivedError2Callback;
+            ReceivedHttpAuthRequest += receivedHttpAuthRequestCallback;
+            ReceivedHttpError += receivedHttpErrorCallback;
+            ReceivedLoginRequest += receivedLoginRequestCallback;
+            ReceivedSslError += receivedSslErrorCallback;
+            RenderProcessGone += renderProcessGoneCallback;
+            SafeBrowsingHit += safeBrowsingHitCallback;
+            ScaleChanged += scaleChangedCallback;
+            TooManyRedirects += tooManyRedirectsCallback;
+            UnhandledInputEvent += unhandledInputEventCallback;
+            UnhandledKeyEvent += unhandledKeyEventCallback;
+        }
+
         public delegate void FormResubmissionCallback(WebView? view, Message? dontResend, Message? resend);
         public delegate void LoadResourceCallback(WebView? view, string? url);
         public delegate void PageCommitVisibleCallback(WebView? view, string? url);
