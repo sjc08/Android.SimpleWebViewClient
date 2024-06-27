@@ -121,8 +121,8 @@ namespace Asjc.Android.SimpleWebViewClient
 
         public override bool OnRenderProcessGone(WebView? view, RenderProcessGoneDetail? detail)
         {
-            return base.OnRenderProcessGone(view, detail);
-            RenderProcessGone?.Invoke(view, detail);
+            return RenderProcessGone?.Invoke(view, detail)
+                   ?? base.OnRenderProcessGone(view, detail);
         }
 
         public override void OnSafeBrowsingHit(WebView? view, IWebResourceRequest? request, [GeneratedEnum] SafeBrowsingThreat threatType, SafeBrowsingResponse? callback)
